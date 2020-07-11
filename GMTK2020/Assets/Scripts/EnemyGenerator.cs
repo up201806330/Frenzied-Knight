@@ -22,9 +22,10 @@ public class EnemyGenerator : MonoBehaviour
     {
         while (enemyCount < maxCount)
         {
-            int x = (Random.Range(0,2) == 0 ? Random.Range(-9, -5) : Random.Range(6, 9)), y = Random.Range(-4, 5);
-            Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(x, y, 1), Quaternion.identity);
             yield return new WaitForSeconds(cooldown);
+            int x = (Random.Range(0,2) == 0 ? Random.Range(-9, -5) : Random.Range(6, 9)), y = Random.Range(-4, 5);
+            GameObject clone = Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(x, y, 1), Quaternion.identity) as GameObject;
+            clone.SetActive(true);
             enemyCount++;
             cooldown *= 0.9f;
         }
