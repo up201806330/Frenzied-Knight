@@ -2229,7 +2229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 948218782}
-  speed: 2
+  speed: 1.8
 --- !u!70 &948218784
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -2280,6 +2280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyHealth: 5
+  healthSegment: 0.3
   pushForce: 200
   pushPos: {fileID: 1780309041}
 --- !u!114 &948218787
@@ -2295,6 +2296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 2
+  knockback: 5000
 --- !u!1 &1081435307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2337,12 +2339,12 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03285579, y: -0.080126666}
-  m_Size: {x: 0.24614461, y: 0.038483888}
-  m_Direction: 1
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.5, y: 1}
+  m_Direction: 0
 --- !u!114 &1081435310
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2488,8 +2490,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a91996439eb035c4783bbc3f6e78608b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
-  knockback: 5000
+  health: 30
 --- !u!50 &1764332530
 Rigidbody2D:
   serializedVersion: 4
