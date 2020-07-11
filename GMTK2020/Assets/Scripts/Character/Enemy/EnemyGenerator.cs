@@ -14,7 +14,7 @@ public class EnemyGenerator : MonoBehaviour
     private float cooldown = 5f;
 
     [SerializeField]
-    private bool active = false;
+    public bool active = false;
 
     private void Start()
     {
@@ -23,9 +23,10 @@ public class EnemyGenerator : MonoBehaviour
 
     IEnumerator EnemyDrop()
     {
-        while (enemyCount < maxCount && active)
+        while (enemyCount < maxCount)
         {
             yield return new WaitForSeconds(cooldown);
+            if (!active) break;
             int x = (Random.Range(0,2) == 0 ? Random.Range(-9, -5) : Random.Range(6, 9)), y = Random.Range(-4, 5);
             GameObject clone = Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(x, y, 1), Quaternion.identity) as GameObject;
             clone.SetActive(true);

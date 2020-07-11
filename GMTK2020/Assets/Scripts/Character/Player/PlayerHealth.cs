@@ -33,9 +33,14 @@ public class PlayerHealth : MonoBehaviour
         {
             switchState.enraged = false;
         }
-        if(health <= healthToEnrage && health > 0)
+        if (health <= healthToEnrage && health > 0)
         {
             switchState.enraged = true;
-        } else if(health <= 0) Destroy(gameObject);
+        }
+        else if (health <= 0)
+        {
+            GameObject.Find("Generator").GetComponent<EnemyGenerator>().active = false;
+            Destroy(gameObject);
+        }
     }
 }
