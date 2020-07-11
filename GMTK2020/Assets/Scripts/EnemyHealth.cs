@@ -24,7 +24,11 @@ public class EnemyHealth : MonoBehaviour
     {
         GetPushed();
         enemyHealth -= damage;
-        if(enemyHealth <= 0) Destroy(gameObject);
+        if (enemyHealth <= 0)
+        {
+            Destroy(gameObject);
+            GameObject.Find("GameObject").GetComponent<EnemyGenerator>().enemyCount--;
+        }
     }
 
     private void GetPushed()
