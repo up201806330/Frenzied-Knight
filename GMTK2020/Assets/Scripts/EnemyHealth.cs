@@ -31,9 +31,9 @@ public class EnemyHealth : MonoBehaviour
             {
                 Instantiate(Resources.Load("Prefabs/Potion"), transform.position, transform.rotation);
             }
+            GameObject.Find("GameObject").GetComponent<EnemyGenerator>().enemyCount--;
             Destroy(gameObject);
         }
-
     }
 
     private void GetPushed()
