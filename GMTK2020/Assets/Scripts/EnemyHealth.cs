@@ -18,8 +18,14 @@ public class EnemyHealth : MonoBehaviour
     {
         GetPushed();
         enemyHealth -= damage;
-        Debug.Log(enemyHealth);
-        if(enemyHealth <= 0) Destroy(gameObject);
+        if(enemyHealth <= 0) //if enemy health is <= 0 it has a change to drop the potion and gets destroyed 
+        {
+            if(Random.Range(1,100) <= 45) //45% chance
+            {
+                Instantiate(Resources.Load("Prefabs/Potion"), transform.position, transform.rotation);
+            }
+            Destroy(gameObject);
+        }
     }
 
     private void GetPushed()

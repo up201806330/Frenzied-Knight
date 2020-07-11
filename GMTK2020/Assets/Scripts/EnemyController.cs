@@ -32,6 +32,7 @@ public class EnemyController : MonoBehaviour
         if ((horizontalMove > 0.8f && !m_FacingRight) || (horizontalMove < -0.8f && m_FacingRight)) Flip();
         
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        
     }
 
     private void Flip()

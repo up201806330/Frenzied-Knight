@@ -7,7 +7,7 @@ public class SwitchState : MonoBehaviour
 
     [SerializeField]
     public bool enraged = false;
-    private bool locked = false;
+    
     void Start()
     {
         knight.gameObject.SetActive(true);
@@ -16,10 +16,12 @@ public class SwitchState : MonoBehaviour
 
     private void Update()
     {
-        if (enraged && !locked)
+        if (enraged)
         {
             switchToDemon();
-            locked = true;
+        } else if (!enraged)
+        {
+            switchToKnight();
         }
     }
 
@@ -27,5 +29,11 @@ public class SwitchState : MonoBehaviour
     {
         knight.gameObject.SetActive(false);
         demon.gameObject.SetActive(true);
+    }
+
+    public void switchToKnight()
+    {
+        knight.gameObject.SetActive(true);
+        demon.gameObject.SetActive(false);
     }
 }
