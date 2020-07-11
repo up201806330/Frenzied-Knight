@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DemonAttack : MonoBehaviour
 {
-    private float fixedTimer = 0.2f;
+    private float fixedTimer = 0.4f;
     private float timer;
 
     // Start is called before the first frame update

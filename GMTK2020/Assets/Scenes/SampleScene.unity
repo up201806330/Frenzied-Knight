@@ -542,6 +542,7 @@ MonoBehaviour:
   - {fileID: 948218779}
   maxCount: 7
   cooldown: 5
+  active: 0
 --- !u!4 &750899152
 Transform:
   m_ObjectHideFlags: 0
