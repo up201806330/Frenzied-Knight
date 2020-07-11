@@ -12,6 +12,7 @@ public class EnemyAttack : MonoBehaviour
         // when enemy collides with the player we take damage
         if(other.gameObject.tag == "Player")
         {
+            other.gameObject.GetComponent<Animator>().SetTrigger("Hit");
             GameObject.FindGameObjectWithTag("MainPlayer").GetComponent<PlayerHealth>().TakeDamage(attack);
             Vector3 direction = transform.localScale.normalized; 
             GameObject.FindGameObjectWithTag("MainPlayer").GetComponent<Rigidbody2D>().AddForce( new Vector2(direction.x * knockback, 0f)); //knock back player
