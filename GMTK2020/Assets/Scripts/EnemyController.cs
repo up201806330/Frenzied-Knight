@@ -5,6 +5,7 @@ public class EnemyController : CharacterController
     private GameObject target;
     [SerializeField]
     private float speed = 100f;
+    private bool playerDead = false;
 
     void Start()
     {
@@ -15,14 +16,21 @@ public class EnemyController : CharacterController
     protected override void Update()
     {
         base.Update();
+        if (target == null)
+        {
+            animator.SetBool("playerDead", true);
+            playerDead = true;
+        }
         followPlayer();
     }
 
     void followPlayer(){
-        float horizontalMove = target.transform.position.x - transform.position.x;
-        if ((horizontalMove > 0f && !m_FacingRight) || (horizontalMove < 0f && m_FacingRight)) Flip();
-        
-        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
-        
+        if (!playerDead)
+        {
+            float horizontalMove = target.transform.position.x - transform.position.x;
+            if ((horizontalMove > 0f && !m_FacingRight) || (horizontalMove < 0f && m_FacingRight)) Flip();
+
+            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        }
     }
 }
