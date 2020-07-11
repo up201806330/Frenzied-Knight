@@ -26,7 +26,7 @@ public class Score : MonoBehaviour
         if(score > highScore) highScore = score;
 
         scoreTxt.text = "score: " + score;
-        highScoreTxt.text = "high score: " + highScore;
+        highScoreTxt.text = "highscore: " + highScore;
     }
 
     public void AddScore(int val)
@@ -37,5 +37,10 @@ public class Score : MonoBehaviour
     public void UpdateHighScore()
     {
         oldHighScore = highScore;
+    }
+
+    public void ResetHighScore()
+    {
+        oldHighScore = 0;
     }
 }
