@@ -19,7 +19,7 @@ public class EnemyController : CharacterController
     }
 
     void followPlayer(){
-        if (!target.GetComponent<KnightController>().alive) animator.SetBool("playerDead", false);
+        if (target.GetComponent<KnightController>().alive) animator.SetBool("playerDead", false);
         else
         {
             animator.SetBool("playerDead", true);

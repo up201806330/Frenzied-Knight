@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public int enemyHealth = 5;
+    public float enemyHealth = 5f;
+    public float healthSegment = 0.3f;
     public float pushForce = 300f;
     public Transform pushPos;
 
@@ -14,11 +15,15 @@ public class EnemyHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Update()
+    {
+        transform.Find("HealthBar").localScale = new Vector3(enemyHealth * healthSegment * 30, 0.2f, 1);
+    }
+
     public void DealDamageToEnemy(int damage)
     {
         GetPushed();
         enemyHealth -= damage;
-        Debug.Log(enemyHealth);
         if(enemyHealth <= 0) Destroy(gameObject);
     }
 
