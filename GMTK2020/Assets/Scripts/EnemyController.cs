@@ -12,8 +12,9 @@ public class EnemyController : CharacterController
         target = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void FixedUpdate()
+    protected override void Update()
     {
+        base.Update();
         followPlayer();
     }
 

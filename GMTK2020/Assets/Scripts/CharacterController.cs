@@ -5,7 +5,7 @@ public abstract class CharacterController : MonoBehaviour
 	protected bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	public Animator animator;
 
-	void Update()
+	protected virtual void Update()
     {
 		float horizontalMove = Input.GetAxisRaw("Horizontal"), verticalMove = Input.GetAxis("Vertical");
 		if ((horizontalMove > 0 && !m_FacingRight) || (horizontalMove < 0 && m_FacingRight)) Flip();

@@ -6,6 +6,11 @@ public class KnightController : CharacterController
 {
     public bool alive = true;
 
+    protected override void Update()
+    {
+        base.Update();
+    }
+
     protected override void Flip()
     {
         base.Flip();
