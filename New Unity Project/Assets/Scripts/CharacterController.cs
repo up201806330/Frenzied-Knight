@@ -1,24 +1,21 @@
 ﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class CharacterController : MonoBehaviour
 {
 	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
 	public Animator animator;
 
-	public float speed;
 	[SerializeField]
 	public bool alive = true;
 
     void Update()
     {
-		float horizontalMove = Input.GetAxisRaw("Horizontal") * speed, verticalMove = Input.GetAxis("Vertical") * speed;
+		float horizontalMove = Input.GetAxisRaw("Horizontal"), verticalMove = Input.GetAxis("Vertical");
 		if ((horizontalMove > 0 && !m_FacingRight) || (horizontalMove < 0 && m_FacingRight)) Flip();
 
 		if (horizontalMove == 0 && verticalMove == 0) animator.SetBool("isMoving", false);
 		else animator.SetBool("isMoving", true);
-
-		GetComponent<Rigidbody2D>().velocity = new Vector2(horizontalMove * Time.fixedDeltaTime, verticalMove * Time.fixedDeltaTime);
 	}
 
 	private void Flip()

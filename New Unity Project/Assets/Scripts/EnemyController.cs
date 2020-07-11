@@ -3,7 +3,7 @@
 public class EnemyController : MonoBehaviour
 {
     private Animator animator;
-    private PlayerController target;
+    private CharacterController target;
     [SerializeField]
     private float speed;
 
@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
-        target = FindObjectOfType<PlayerController>();
+        target = FindObjectOfType<CharacterController>();
     }
 
     void Update()
