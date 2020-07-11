@@ -5,7 +5,7 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private CharacterController target;
     [SerializeField]
-    private float speed;
+    private float speed = 100f;
 
     private bool m_FacingRight = true;  // For determining which way the enemy is currently facing.
 
@@ -21,12 +21,12 @@ public class EnemyController : MonoBehaviour
     }
 
     void followPlayer(){
-        if (target.alive) animator.SetBool("playerDead", false);
-        else
-        {
-            animator.SetBool("playerDead", true);
-            return;
-        }
+        //if (target.alive) animator.SetBool("playerDead", false);
+        //else
+        //{
+        //    animator.SetBool("playerDead", true);
+        //    return;
+        //}
 
         float horizontalMove = target.transform.position.x - transform.position.x;
         if ((horizontalMove > 0 && !m_FacingRight) || (horizontalMove < 0 && m_FacingRight)) Flip();

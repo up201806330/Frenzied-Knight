@@ -19,7 +19,6 @@ public class SwitchState : MonoBehaviour
         if (enraged && !locked)
         {
             switchToDemon();
-            enraged = false;
             locked = true;
         }
     }

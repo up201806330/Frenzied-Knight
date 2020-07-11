@@ -6,10 +6,7 @@ public class CharacterController : MonoBehaviour
 
 	public Animator animator;
 
-	[SerializeField]
-	public bool alive = true;
-
-    void Update()
+	void Update()
     {
 		float horizontalMove = Input.GetAxisRaw("Horizontal"), verticalMove = Input.GetAxis("Vertical");
 		if ((horizontalMove > 0 && !m_FacingRight) || (horizontalMove < 0 && m_FacingRight)) Flip();
@@ -28,4 +25,11 @@ public class CharacterController : MonoBehaviour
 		theScale.x *= -1;
 		transform.localScale = theScale;
 	}
+
+	//private void OnCollisionEnter(Collision collision)
+	//{
+	//	if (collision.gameObject.tag == "Enemy" && !invincible)
+	//	{
+	//	}
+	//}
 }
