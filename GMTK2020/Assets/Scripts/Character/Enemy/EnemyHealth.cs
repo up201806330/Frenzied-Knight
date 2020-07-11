@@ -10,6 +10,9 @@ public class EnemyHealth : MonoBehaviour
     public float pushForce = 300f;
     public Transform pushPos;
 
+    [SerializeField]
+    public int dropChance = 45;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -17,7 +20,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Update()
     {
-        transform.Find("HealthBar").localScale = new Vector3(enemyHealth * healthSegment , 0.1f, 1);
+        transform.Find("EnemyHealthBar").localScale = new Vector3(enemyHealth * healthSegment , 0.1f, 1);
     }
 
     public void DealDamageToEnemy(int damage)
@@ -27,11 +30,11 @@ public class EnemyHealth : MonoBehaviour
 
         if(enemyHealth <= 0) //if enemy health is <= 0 it has a change to drop the potion and gets destroyed 
         {
-            if(Random.Range(1,100) <= 45) //45% chance
+            if(Random.Range(1,100) <= dropChance) //45% chance
             {
                 Instantiate(Resources.Load("Prefabs/Potion"), transform.position, transform.rotation);
             }
-            //GameObject.Find("GameObject").GetComponent<EnemyGenerator>().enemyCount--;
+            GameObject.Find("Generator").GetComponent<EnemyGenerator>().enemyCount--;
             Destroy(gameObject);
         }
     }

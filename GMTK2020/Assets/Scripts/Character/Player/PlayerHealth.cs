@@ -29,17 +29,17 @@ public class PlayerHealth : MonoBehaviour
         healthBar.ChangeSliderValue(-damage);
        
         //we enrage the player based on current health
-        if(health > healthToEnrage)
+        if(health > healthToEnrage && switchState.enraged)
         {
-            switchState.enraged = false;
+            StartCoroutine(switchState.Transform(false));
         }
-        if (health <= healthToEnrage && health > 0)
+        if (health <= healthToEnrage && health > 0 && !switchState.enraged)
         {
-            switchState.enraged = true;
+            StartCoroutine(switchState.Transform(true));
         }
         else if (health <= 0)
         {
-            GameObject.Find("Generator").GetComponent<EnemyGenerator>().active = false;
+            GameObject.Find("Generator").GetComponent<EnemyGenerator>().active = false; // Stop spawner
             Destroy(gameObject);
         }
     }
