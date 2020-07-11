@@ -1,0 +1,25 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class HealthBar : MonoBehaviour
+{
+    private Slider slider;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        slider = this.GetComponent<Slider>();
+    }
+
+    public void SetMaxSlider(int val)
+    {
+        slider.maxValue = val;
+    }
+
+    public void ChangeSliderValue(int val)
+    {
+        slider.value += val;
+    }
+}
