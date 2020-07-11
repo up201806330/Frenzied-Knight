@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,18 +10,23 @@ public class PlayerHealth : MonoBehaviour
     private int healthToEnrage;
     private Rigidbody2D rb;
 
+    private HealthBar healthBar;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         switchState = GetComponent<SwitchState>();
-        healthToEnrage = health % 4;
+        healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
+        healthToEnrage = (int)Math.Ceiling((double)health / 3); 
+        healthBar.SetMaxSlider(health); //we set the slider's max value to the max value of player's health
     }
 
     // player takes damage (or gains health if damage is negative)
     public void TakeDamage(int damage)
     {
         health -= damage;
+        healthBar.ChangeSliderValue(-damage);
         Debug.Log("PLAYER HEALTH: " + health);
         //we enrage the player based on current health
         if(health > healthToEnrage)
