@@ -7,10 +7,13 @@ public class DemonAttack : MonoBehaviour
     private float fixedTimer = 0.4f;
     private float timer;
 
+    private AudioSource fireballSound;
+
     // Start is called before the first frame update
     void Start()
     {
         timer = fixedTimer;
+        fireballSound = GameObject.Find("FireballSound").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,6 +33,7 @@ public class DemonAttack : MonoBehaviour
     //spawn a fireball
     private void Shoot()
     {
+        fireballSound.Play();
         Instantiate(Resources.Load("Prefabs/Fireball"), transform.position, transform.rotation);
     }
 }
