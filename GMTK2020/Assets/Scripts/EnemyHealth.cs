@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Update()
     {
-        transform.Find("HealthBar").localScale = new Vector3(enemyHealth * healthSegment * 30, 0.2f, 1);
+        transform.Find("HealthBar").localScale = new Vector3(enemyHealth * healthSegment * 30, 0.1f, 1);
     }
 
     public void DealDamageToEnemy(int damage)
