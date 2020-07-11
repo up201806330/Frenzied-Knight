@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 	}
-	void Update()
+	void FixedUpdate()
 	{
 		float horizontalMove = Input.GetAxisRaw("Horizontal") * speed, verticalMove = Input.GetAxis("Vertical") * speed;
 		if(horizontalMove == 0 || verticalMove == 0)

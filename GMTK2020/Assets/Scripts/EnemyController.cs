@@ -7,8 +7,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private float speed = 100f;
 
-    private Vector2 direction = Vector2.zero;
-
     private bool m_FacingRight = true;  // For determining which way the enemy is currently facing.
 
     void Start()
@@ -17,7 +15,7 @@ public class EnemyController : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void Update()
+    void FixedUpdate()
     {
         followPlayer();
     }
