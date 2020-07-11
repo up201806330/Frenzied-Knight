@@ -28,4 +28,10 @@ public class SwitchState : MonoBehaviour
         knight.gameObject.SetActive(false);
         demon.gameObject.SetActive(true);
     }
+
+    public GameObject currentState()
+    {
+        if (!enraged) return knight;
+        else return demon;
+    }
 }

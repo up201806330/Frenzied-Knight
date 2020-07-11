@@ -1,20 +1,16 @@
 ﻿using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : CharacterController
 {
-    private Animator animator;
-    private GameObject target;
+    [SerializeField]
+    private PlayerController target;
     [SerializeField]
     private float speed = 100f;
-
-    private Vector2 direction = Vector2.zero;
-
-    private bool m_FacingRight = true;  // For determining which way the enemy is currently facing.
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        target = GameObject.FindGameObjectWithTag("Player");
+        target = target.GetComponent<SwitchState>().currentState().GetComponent<PlayerController>();
     }
 
     void Update()
@@ -23,12 +19,12 @@ public class EnemyController : MonoBehaviour
     }
 
     void followPlayer(){
-        //if (target.alive) animator.SetBool("playerDead", false);
-        //else
-        //{
-        //    animator.SetBool("playerDead", true);
-        //    return;
-        //}
+        if (!target.alive) animator.SetBool("playerDead", false);
+        else
+        {
+            animator.SetBool("playerDead", true);
+            return;
+        }
 
         float horizontalMove = target.transform.position.x - transform.position.x;
         if ((horizontalMove > 0.8f && !m_FacingRight) || (horizontalMove < -0.8f && m_FacingRight)) Flip();
@@ -45,5 +41,13 @@ public class EnemyController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Collided");
+        }
     }
 }

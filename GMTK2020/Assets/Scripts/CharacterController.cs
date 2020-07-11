@@ -2,7 +2,7 @@
 
 public class CharacterController : MonoBehaviour
 {
-	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+	protected bool m_FacingRight = true;  // For determining which way the player is currently facing.
 
 	public Animator animator;
 
@@ -33,11 +33,4 @@ public class CharacterController : MonoBehaviour
 			else if(!m_FacingRight) transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);;
 		} 
 	}
-
-	//private void OnCollisionEnter(Collision collision)
-	//{
-	//	if (collision.gameObject.tag == "Enemy" && !invincible)
-	//	{
-	//	}
-	//}
 }
