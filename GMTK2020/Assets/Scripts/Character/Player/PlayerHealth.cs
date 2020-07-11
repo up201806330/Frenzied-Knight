@@ -18,7 +18,7 @@ public class PlayerHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         switchState = GetComponent<SwitchState>();
         healthBar = GameObject.Find("HealthBar").GetComponent<HealthBar>();
-        healthToEnrage = (int)Math.Ceiling((double)health / 3); 
+        healthToEnrage = (int)Math.Ceiling((double)health / 2); 
         healthBar.SetMaxSlider(health); //we set the slider's max value to the max value of player's health
     }
 
@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health -= damage;
         healthBar.ChangeSliderValue(-damage);
-        Debug.Log("PLAYER HEALTH: " + health);
+       
         //we enrage the player based on current health
         if(health > healthToEnrage)
         {
