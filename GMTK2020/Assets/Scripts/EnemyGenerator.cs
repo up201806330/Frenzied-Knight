@@ -13,6 +13,9 @@ public class EnemyGenerator : MonoBehaviour
     [SerializeField]
     private float cooldown = 5f;
 
+    [SerializeField]
+    private bool active = false;
+
     private void Start()
     {
         StartCoroutine(EnemyDrop());
@@ -20,7 +23,7 @@ public class EnemyGenerator : MonoBehaviour
 
     IEnumerator EnemyDrop()
     {
-        while (enemyCount < maxCount)
+        while (enemyCount < maxCount && active)
         {
             yield return new WaitForSeconds(cooldown);
             int x = (Random.Range(0,2) == 0 ? Random.Range(-9, -5) : Random.Range(6, 9)), y = Random.Range(-4, 5);
