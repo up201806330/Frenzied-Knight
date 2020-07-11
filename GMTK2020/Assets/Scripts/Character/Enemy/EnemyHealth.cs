@@ -9,6 +9,7 @@ public class EnemyHealth : MonoBehaviour
     public float healthSegment = 0.3f;
     public float pushForce = 300f;
     public Transform pushPos;
+    private Score score;
 
     [SerializeField]
     public int dropChance = 45;
@@ -16,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        score = GameObject.Find("GameManager").GetComponent<Score>();
     }
 
     private void Update()
@@ -35,6 +37,11 @@ public class EnemyHealth : MonoBehaviour
                 Instantiate(Resources.Load("Prefabs/Potion"), transform.position, transform.rotation);
             }
             GameObject.Find("Generator").GetComponent<EnemyGenerator>().enemyCount--;
+            
+            //we add score based on enemy's name
+            if(this.gameObject.name == "TinyGuy") score.AddScore(5);
+            else if(this.gameObject.name == "Skeleton") score.AddScore(10);
+            else if(this.gameObject.name == "Zombie") score.AddScore(15);
             Destroy(gameObject);
         }
     }
