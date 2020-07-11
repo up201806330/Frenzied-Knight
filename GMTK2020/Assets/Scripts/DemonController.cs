@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KnightController : CharacterController
+public class DemonController : CharacterController
 {
     protected override void Update()
     {

@@ -19,19 +19,10 @@ public class EnemyController : CharacterController
     }
 
     void followPlayer(){
-        if (!target.GetComponent<KnightController>().alive) animator.SetBool("playerDead", false);
-        else
-        {
-            animator.SetBool("playerDead", true);
-            return;
-        }
-
         float horizontalMove = target.transform.position.x - transform.position.x;
-        if ((horizontalMove > 0.8f && !m_FacingRight) || (horizontalMove < -0.8f && m_FacingRight)) Flip();
+        if ((horizontalMove > 0f && !m_FacingRight) || (horizontalMove < 0f && m_FacingRight)) Flip();
         
         transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
         
     }
-
-    
 }

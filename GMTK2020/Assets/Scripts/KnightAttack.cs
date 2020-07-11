@@ -6,7 +6,7 @@ public class KnightAttack : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float dash = 5000f; 
-    private float fixedTimer = 0.5f;
+    private float fixedTimer = 0.3f;
     private float timer;
     
     private GameObject spear;

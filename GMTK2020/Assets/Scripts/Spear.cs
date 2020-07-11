@@ -6,7 +6,7 @@ public class Spear : MonoBehaviour
 {
     public int attack = 2;
 
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Enemy")
         {
