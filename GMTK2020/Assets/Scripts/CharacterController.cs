@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 
-public class CharacterController : MonoBehaviour
+public abstract class CharacterController : MonoBehaviour
 {
-	private bool m_FacingRight = true;  // For determining which way the player is currently facing.
-
+	protected bool m_FacingRight = true;  // For determining which way the player is currently facing.
 	public Animator animator;
 
-	void Update()
+	protected virtual void Update()
     {
 		float horizontalMove = Input.GetAxisRaw("Horizontal"), verticalMove = Input.GetAxis("Vertical");
 		if ((horizontalMove > 0 && !m_FacingRight) || (horizontalMove < 0 && m_FacingRight)) Flip();
@@ -15,7 +14,7 @@ public class CharacterController : MonoBehaviour
 		else animator.SetBool("isMoving", true);
 	}
 
-	private void Flip()
+	protected virtual void Flip()
 	{
 		// Switch the way the player is labelled as facing.
 		m_FacingRight = !m_FacingRight;
@@ -24,20 +23,5 @@ public class CharacterController : MonoBehaviour
 		Vector3 theScale = transform.localScale;
 		theScale.x *= -1;
 		transform.localScale = theScale;
-
-		// So that the knight body stays on the same position when getting flipped with the spear, instead of flipping the entire sprite.
-		// Not optimal but faster than making the spear a game object on its own.
-		if(gameObject.name == "Knight")
-		{
-			if(m_FacingRight) transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
-			else if(!m_FacingRight) transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);;
-		} 
 	}
-
-	//private void OnCollisionEnter(Collision collision)
-	//{
-	//	if (collision.gameObject.tag == "Enemy" && !invincible)
-	//	{
-	//	}
-	//}
 }

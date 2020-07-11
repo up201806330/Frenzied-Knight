@@ -5,7 +5,7 @@ using UnityEngine;
 public class KnightAttack : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float dash = 2000f; 
+    public float dash = 5000f; 
     private float fixedTimer = 0.5f;
     private float timer;
     
@@ -30,6 +30,7 @@ public class KnightAttack : MonoBehaviour
         //if player presses spacebar
         if(Input.GetButtonDown("Attack") && timer <= 0)
         {
+            GetComponent<Animator>().SetTrigger("Attacking");
             Attack();
             timer = fixedTimer; //reset the timer
         }

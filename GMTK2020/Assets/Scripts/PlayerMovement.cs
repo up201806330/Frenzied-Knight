@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 	public float speed = 200f;
 	private Rigidbody2D rb;
@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 			rb.velocity = new Vector2(horizontalMove * Time.fixedDeltaTime, verticalMove * Time.fixedDeltaTime);
 		} else
 		{
-			rb.velocity = new Vector2(0.7f * horizontalMove * Time.fixedDeltaTime, 0.7f * verticalMove * Time.fixedDeltaTime);
+			rb.velocity = new Vector2(0.85f * horizontalMove * Time.fixedDeltaTime, 0.85f * verticalMove * Time.fixedDeltaTime);
 		}
 		
 	}

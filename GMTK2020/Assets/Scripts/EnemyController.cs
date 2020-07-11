@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : CharacterController
 {
-    private Animator animator;
     private GameObject target;
     [SerializeField]
     private float speed = 100f;
-
-    private bool m_FacingRight = true;  // For determining which way the enemy is currently facing.
 
     void Start()
     {
@@ -15,18 +12,19 @@ public class EnemyController : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
     }
 
-    void FixedUpdate()
+    protected override void Update()
     {
+        base.Update();
         followPlayer();
     }
 
     void followPlayer(){
-        //if (target.alive) animator.SetBool("playerDead", false);
-        //else
-        //{
-        //    animator.SetBool("playerDead", true);
-        //    return;
-        //}
+        if (!target.GetComponent<KnightController>().alive) animator.SetBool("playerDead", false);
+        else
+        {
+            animator.SetBool("playerDead", true);
+            return;
+        }
 
         float horizontalMove = target.transform.position.x - transform.position.x;
         if ((horizontalMove > 0.8f && !m_FacingRight) || (horizontalMove < -0.8f && m_FacingRight)) Flip();
@@ -35,14 +33,5 @@ public class EnemyController : MonoBehaviour
         
     }
 
-    private void Flip()
-    {
-        // Switch the way the player is labelled as facing.
-        m_FacingRight = !m_FacingRight;
-
-        // Multiply the player's x local scale by -1.
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
-    }
+    
 }
