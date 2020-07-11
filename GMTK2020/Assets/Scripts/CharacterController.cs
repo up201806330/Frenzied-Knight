@@ -10,8 +10,11 @@ public abstract class CharacterController : MonoBehaviour
 		float horizontalMove = Input.GetAxisRaw("Horizontal"), verticalMove = Input.GetAxis("Vertical");
 		if ((horizontalMove > 0 && !m_FacingRight) || (horizontalMove < 0 && m_FacingRight)) Flip();
 
-		if (horizontalMove == 0 && verticalMove == 0) animator.SetBool("isMoving", false);
-		else animator.SetBool("isMoving", true);
+		if (name== "Knight")
+		{
+			if (horizontalMove == 0 && verticalMove == 0) animator.SetBool("isMoving", false);
+			else animator.SetBool("isMoving", true);
+		}
 	}
 
 	protected virtual void Flip()

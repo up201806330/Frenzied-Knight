@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public int enemyHealth = 5;
+    public float enemyHealth = 5f;
+    public float healthSegment = 0.3f;
     public float pushForce = 300f;
     public Transform pushPos;
 
@@ -14,10 +15,16 @@ public class EnemyHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Update()
+    {
+        transform.Find("HealthBar").localScale = new Vector3(enemyHealth * healthSegment * 30, 0.2f, 1);
+    }
+
     public void DealDamageToEnemy(int damage)
     {
         GetPushed();
         enemyHealth -= damage;
+
         if(enemyHealth <= 0) //if enemy health is <= 0 it has a change to drop the potion and gets destroyed 
         {
             if(Random.Range(1,100) <= 45) //45% chance
@@ -26,6 +33,7 @@ public class EnemyHealth : MonoBehaviour
             }
             Destroy(gameObject);
         }
+
     }
 
     private void GetPushed()
