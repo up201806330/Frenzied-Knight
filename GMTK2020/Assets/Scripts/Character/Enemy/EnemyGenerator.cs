@@ -21,7 +21,7 @@ public class EnemyGenerator : MonoBehaviour
         StartCoroutine(EnemyDrop());
     }
 
-    IEnumerator EnemyDrop()
+    private IEnumerator EnemyDrop()
     {
         while (enemyCount < maxCount)
         {

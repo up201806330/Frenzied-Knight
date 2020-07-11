@@ -36,7 +36,8 @@ public class EnemyHealth : MonoBehaviour
             {
                 Instantiate(Resources.Load("Prefabs/Potion"), transform.position, transform.rotation);
             }
-            GameObject.Find("Generator").GetComponent<EnemyGenerator>().enemyCount--;
+            
+            //GameObject.Find("Generator").GetComponent<EnemyGenerator>().enemyCount--;
             
             //we add score based on enemy's name
             if(this.gameObject.name == "TinyGuy") score.AddScore(5);

@@ -4,34 +4,23 @@ using UnityEngine;
 
 public class SwitchState : MonoBehaviour
 {
-    public GameObject knight, demon;
+    private GameObject knight, demon;
 
     [SerializeField]
     public bool enraged = false;
     
     void Start()
     {
+        knight = GameObject.Find("Knight");
+        demon = GameObject.Find("Demon");
         knight.gameObject.SetActive(true);
         demon.gameObject.SetActive(false);
     }
 
-    public IEnumerator Transform(bool enraged)
+    public void switchToKnight()
     {
-        this.enraged = enraged;
-        Animator anim;
-        if (enraged)
-        {
-            anim = knight.GetComponent<Animator>();
-            anim.SetTrigger("SwitchState");
-            yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-            switchToDemon();
-        } else if (!enraged)
-        {
-            anim = demon.GetComponent<Animator>();
-            anim.SetTrigger("SwitchState");
-            yield return new WaitForSeconds(anim.GetCurrentAnimatorStateInfo(0).length + anim.GetCurrentAnimatorStateInfo(0).normalizedTime);
-            switchToKnight();
-        }
+        knight.gameObject.SetActive(true);
+        demon.gameObject.SetActive(false);
     }
 
     public void switchToDemon()
@@ -40,9 +29,18 @@ public class SwitchState : MonoBehaviour
         demon.gameObject.SetActive(true);
     }
 
-    public void switchToKnight()
+    public void Transform(bool enraged)
     {
-        knight.gameObject.SetActive(true);
-        demon.gameObject.SetActive(false);
+        this.enraged = enraged;
+        Animator anim;
+        if (enraged)
+        {
+            anim = knight.GetComponent<Animator>();
+            anim.SetTrigger("SwitchState");
+        } else
+        {
+            anim = demon.GetComponent<Animator>();
+            anim.SetTrigger("SwitchState");
+        }
     }
 }
