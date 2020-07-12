@@ -11,6 +11,8 @@ public class EnemyAttack : MonoBehaviour
     private Renderer rend;
     private Color c;
 
+    private bool canKnockback = true;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("MainPlayer");
@@ -25,10 +27,22 @@ public class EnemyAttack : MonoBehaviour
         {
             player.GetComponent<PlayerHealth>().TakeDamage(attack);
 
-            Knockback();
+            if(canKnockback)
+            {
+                Knockback();
+                canKnockback = false;
+            }
+
+            StartCoroutine(CanKnockBack());
 
             StartCoroutine(getInvulnerable());
         }
+    }
+
+    IEnumerator CanKnockBack()
+    {
+        yield return new WaitForSeconds(1);
+        canKnockback = true;
     }
 
     IEnumerator getInvulnerable()
