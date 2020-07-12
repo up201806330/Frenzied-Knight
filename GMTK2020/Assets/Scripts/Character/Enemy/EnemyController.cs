@@ -5,32 +5,32 @@ public class EnemyController : CharacterController
     private GameObject target;
     [SerializeField]
     private float speed = 100f;
-    private bool playerDead = false;
+    private SwitchState state;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player");
+        state = target.GetComponentInParent<SwitchState>();
     }
 
     protected override void Update()
     {
         base.Update();
-        if (target.GetComponentInParent<SwitchState>().dead)
+        if (state.dead)
         {
             animator.SetBool("playerDead", true);
-            playerDead = true;
+            return;
         }
         followPlayer();
     }
 
     void followPlayer(){
-        if (!playerDead)
-        {
-            float horizontalMove = target.transform.position.x - transform.position.x;
-            if ((horizontalMove > 0f && !m_FacingRight) || (horizontalMove < 0f && m_FacingRight)) Flip();
+       
+        float horizontalMove = target.transform.position.x - transform.position.x;
+        if ((horizontalMove > 0f && !m_FacingRight) || (horizontalMove < 0f && m_FacingRight)) Flip();
 
-            transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
-        }
+        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        
     }
 }

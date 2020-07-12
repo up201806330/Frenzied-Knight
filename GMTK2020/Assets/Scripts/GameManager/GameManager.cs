@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
 
         lost = true;
         gameOverPanel.SetActive(true);
-        Time.timeScale = 0;
+        Time.timeScale = 1;
     }
 
     public void Exit()
