@@ -27,8 +27,7 @@ public class EnemyAttack : MonoBehaviour
 
             player.GetComponent<PlayerHealth>().TakeDamage(attack);
 
-            Vector3 direction = transform.localScale.normalized; 
-            player.GetComponent<Rigidbody2D>().AddForce( new Vector2(direction.x * knockback, 0f)); //knock back player
+            StartCoroutine(Knockback(0.02f, knockback, player.GetComponent<Rigidbody2D>().transform));
 
             StartCoroutine(getInvulnerable());
         }
@@ -39,9 +38,23 @@ public class EnemyAttack : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 9, true);
         c.a = 0.5f;
         rend.material.color = c;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         c.a = 1f;
         rend.material.color = c;
         Physics2D.IgnoreLayerCollision(8, 9, false);
+    }
+
+    public IEnumerator Knockback(float knockDur, float knockbackPwr, Transform obj)
+    {
+        float timer = 0;
+
+        while (knockDur > timer)
+        {
+            timer += Time.deltaTime;
+            Vector2 direction = (obj.transform.position - this.transform.position).normalized;
+            player.GetComponent<Rigidbody2D>().AddForce(direction * knockbackPwr);
+        }
+
+        yield return 0;
     }
 }
