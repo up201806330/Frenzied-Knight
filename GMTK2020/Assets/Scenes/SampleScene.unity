@@ -1606,6 +1606,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 605332615}
+  speed: 200
 --- !u!70 &605332613
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -4707,6 +4708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 836365975}
+  speed: 200
 --- !u!114 &836365979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6748,6 +6750,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 88761942}
   pausePanel: {fileID: 678203504}
+  lost: 0
 --- !u!4 &1612475132
 Transform:
   m_ObjectHideFlags: 0
@@ -8053,7 +8056,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da189ea57702a4d4d966a37b9da947bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  animator: {fileID: 0}
+  speed: 250
 --- !u!212 &1764332526
 SpriteRenderer:
   m_ObjectHideFlags: 0

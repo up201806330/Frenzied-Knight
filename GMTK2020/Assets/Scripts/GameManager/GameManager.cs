@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     private Score score;
 
-    private bool lost = false;
+    public bool lost = false;
     private bool once = true;
 
     // Start is called before the first frame update

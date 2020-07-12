@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : CharacterController
 {
 	public float speed = 200f;
 	private Rigidbody2D rb;
@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 	}
-	void FixedUpdate()
+	protected override void Update()
 	{
 
 		float horizontalMove = Input.GetAxisRaw("Horizontal") * speed, verticalMove = Input.GetAxis("Vertical") * speed;
@@ -25,7 +25,9 @@ public class PlayerMovement : MonoBehaviour
 		} else
 		{
 			rb.velocity = new Vector2(0.85f * horizontalMove * Time.fixedDeltaTime, 0.85f * verticalMove * Time.fixedDeltaTime);
+			if ((horizontalMove > 0f && !m_FacingRight) || (horizontalMove < 0f && m_FacingRight)) Flip();
 		}
+
 		
 	}
 }
