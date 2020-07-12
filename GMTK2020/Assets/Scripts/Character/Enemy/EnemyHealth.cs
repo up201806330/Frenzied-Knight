@@ -15,6 +15,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     public int dropChance = 45;
 
+    public bool isFrozen = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -30,6 +32,7 @@ public class EnemyHealth : MonoBehaviour
     public void DealDamageToEnemy(int damage)
     {
         anim.SetTrigger("Hit");
+        StartCoroutine(Freeze());
 
         if(enemyHealth <= 0) //if enemy health is <= 0 it has a change to drop the potion and gets destroyed 
         {
@@ -50,6 +53,13 @@ public class EnemyHealth : MonoBehaviour
 
         GetPushed();
         enemyHealth -= damage;
+    }
+
+    IEnumerator Freeze()
+    {
+        isFrozen = true;
+        yield return new WaitForSeconds(0.7f);
+        isFrozen = false;
     }
 
     private void GetPushed()

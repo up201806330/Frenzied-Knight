@@ -7,11 +7,15 @@ public class EnemyController : CharacterController
     private float speed = 100f;
     private SwitchState state;
 
+    private EnemyHealth enemyHealth;
+
     void Start()
     {
         animator = GetComponent<Animator>();
         target = GameObject.FindGameObjectWithTag("Player");
         state = target.GetComponentInParent<SwitchState>();
+
+        enemyHealth = this.GetComponent<EnemyHealth>();
     }
 
     protected override void Update()
@@ -22,7 +26,10 @@ public class EnemyController : CharacterController
             animator.SetBool("playerDead", true);
             return;
         }
-        followPlayer();
+        if(!enemyHealth.isFrozen)
+        {
+            followPlayer();
+        }
     }
 
     void followPlayer(){
