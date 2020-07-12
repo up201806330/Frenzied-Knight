@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Update()
     {
-        transform.Find("EnemyHealthBar").localScale = new Vector3(enemyHealth * healthSegment , 0.1f, 1);
+        transform.GetChild(1).localScale = new Vector3(enemyHealth * healthSegment , 0.1f, 1);
     }
 
     public void DealDamageToEnemy(int damage)
@@ -43,6 +43,7 @@ public class EnemyHealth : MonoBehaviour
             if(this.gameObject.name == "TinyGuy") score.AddScore(5);
             else if(this.gameObject.name == "Skeleton") score.AddScore(10);
             else if(this.gameObject.name == "Zombie") score.AddScore(15);
+
             Destroy(gameObject);
         }
     }

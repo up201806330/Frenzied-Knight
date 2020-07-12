@@ -39,7 +39,6 @@ public class PlayerHealth : MonoBehaviour
         }
         else if (health <= 0) // Died
         {
-            GameObject.Find("Generator").GetComponent<EnemyGenerator>().active = false; // Stop spawner
             Destroy(gameObject);
         }
         else
