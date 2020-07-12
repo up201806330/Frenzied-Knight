@@ -10,7 +10,6 @@ public class KnightAttack : MonoBehaviour
     private float timer;
     private PlayerHealth health;
 
-
     private GameObject spear;
 
 

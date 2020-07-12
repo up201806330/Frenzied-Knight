@@ -28,7 +28,7 @@ public class PlayerHealth : MonoBehaviour
     // player takes damage (or gains health if damage is negative)
     public void TakeDamage(int damage)
     {
-        if ((GameObject.Find("Knight") != null && !takingDamage) || GameObject.Find("Demon") != null)
+        if (!takingDamage)
         {
             health -= damage;
             healthBar.ChangeSliderValue(-damage);
