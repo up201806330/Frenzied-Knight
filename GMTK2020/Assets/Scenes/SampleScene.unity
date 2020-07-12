@@ -1004,13 +1004,15 @@ GameObject:
   - component: {fileID: 605332613}
   - component: {fileID: 605332612}
   - component: {fileID: 605332614}
-  m_Layer: 0
+  - component: {fileID: 605332617}
+  - component: {fileID: 605332618}
+  m_Layer: 8
   m_Name: Demon
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &605332611
 Transform:
   m_ObjectHideFlags: 0
@@ -4428,7 +4430,7 @@ GameObject:
   - component: {fileID: 1081435308}
   - component: {fileID: 1081435309}
   - component: {fileID: 1081435310}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5991,7 +5993,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.771, y: 1.809}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1764332528
@@ -6006,8 +6008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149da9cccb1e91040a57ba49bcf3974a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knight: {fileID: 836365973}
-  demon: {fileID: 605332610}
   enraged: 0
 --- !u!114 &1764332529
 MonoBehaviour:

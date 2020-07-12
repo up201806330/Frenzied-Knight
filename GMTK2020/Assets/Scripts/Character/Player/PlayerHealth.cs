@@ -28,18 +28,22 @@ public class PlayerHealth : MonoBehaviour
         health -= damage;
         healthBar.ChangeSliderValue(-damage);
        
-        //we enrage the player based on current health
-        if(health > healthToEnrage)
+        
+        if(health > healthToEnrage && switchState.enraged) // Is in demon mode and regained enough health
         {
-            switchState.enraged = false;
+            switchState.Transform(false);
         }
-        if (health <= healthToEnrage && health > 0)
+        if (health <= healthToEnrage && health > 0 && !switchState.enraged) // Is in knight mode and lost enough health
         {
-            switchState.enraged = true;
+            switchState.Transform(true);
         }
-        else if (health <= 0)
+        else if (health <= 0) // Died
         {
             Destroy(gameObject);
+        }
+        else
+        {
+            GetComponentInChildren<Animator>().SetTrigger("Hit");
         }
     }
 }

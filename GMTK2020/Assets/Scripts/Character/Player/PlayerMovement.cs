@@ -11,7 +11,9 @@ public class PlayerMovement : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
+
 		float horizontalMove = Input.GetAxisRaw("Horizontal") * speed, verticalMove = Input.GetAxis("Vertical") * speed;
+		
 		if(horizontalMove == 0 || verticalMove == 0)
 		{
 			rb.velocity = new Vector2(horizontalMove * Time.fixedDeltaTime, verticalMove * Time.fixedDeltaTime);
