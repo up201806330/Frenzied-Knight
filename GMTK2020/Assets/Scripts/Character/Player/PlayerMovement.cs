@@ -16,7 +16,8 @@ public class PlayerMovement : MonoBehaviour
 		
 		if (GetComponent<SwitchState>().dead)
         {
-			horizontalMove = 0; verticalMove = 0;
+			horizontalMove = 0; 
+			verticalMove = 0;
         }
 
 		if(horizontalMove == 0 || verticalMove == 0)

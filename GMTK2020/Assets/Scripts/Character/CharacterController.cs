@@ -14,8 +14,6 @@ public abstract class CharacterController : MonoBehaviour
 
     protected virtual void Update()
     {
-		//if (playerState == null) Debug.Log(this.name);
-		//if (playerState.dead) return;
 		float horizontalMove = Input.GetAxisRaw("Horizontal"), verticalMove = Input.GetAxis("Vertical");
 		if ((horizontalMove > 0 && !m_FacingRight) || (horizontalMove < 0 && m_FacingRight)) Flip();
 	}
