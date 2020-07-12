@@ -12,6 +12,8 @@ public class PlayerHealth : MonoBehaviour
     private HealthBar healthBar;
     private KnightAttack knightAttack;
 
+    public bool takingDamage = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,11 +28,12 @@ public class PlayerHealth : MonoBehaviour
     // player takes damage (or gains health if damage is negative)
     public void TakeDamage(int damage)
     {
-        if((GameObject.Find("Knight") != null && knightAttack.canTakeDamage) || GameObject.Find("Demon") != null)
+        if ((GameObject.Find("Knight") != null && !takingDamage) || GameObject.Find("Demon") != null)
         {
             health -= damage;
             healthBar.ChangeSliderValue(-damage);
-            
+            takingDamage = true;
+
             if (damage > 0)
             {
                 GetComponentInChildren<Animator>().SetTrigger("Hit");
@@ -52,7 +55,6 @@ public class PlayerHealth : MonoBehaviour
             }
             else if (health <= 0) // Died
             {
-                //Destroy(gameObject);
                 GetComponentInChildren<Animator>().SetTrigger("Dead");
             }
         }  

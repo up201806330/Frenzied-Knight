@@ -8,12 +8,14 @@ public class DemonAttack : MonoBehaviour
     private float timer;
 
     private AudioSource fireballSound;
+    private PlayerHealth health;
 
     // Start is called before the first frame update
     void Start()
     {
         timer = fixedTimer;
         fireballSound = GameObject.Find("FireballSound").GetComponent<AudioSource>();
+        health = GetComponentInParent<PlayerHealth>();
     }
 
     // Update is called once per frame
@@ -22,7 +24,7 @@ public class DemonAttack : MonoBehaviour
         timer -= Time.deltaTime; //dash cooldown goes down
 
         //if player presses spacebar
-        if(Input.GetButtonDown("Attack") && timer <= 0)
+        if(Input.GetButtonDown("Attack") && timer <= 0 && !health.takingDamage)
         {
             GetComponent<Animator>().SetTrigger("Attacking");
             Shoot();

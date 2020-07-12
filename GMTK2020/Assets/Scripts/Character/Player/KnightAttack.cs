@@ -8,15 +8,18 @@ public class KnightAttack : MonoBehaviour
     public float dash = 5000f; 
     private float fixedTimer = 0.3f;
     private float timer;
-    public bool canTakeDamage = true;
-    
+    private PlayerHealth health;
+
+
     private GameObject spear;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GameObject.Find("Player").GetComponent<Rigidbody2D>();
         timer = fixedTimer;
+        health = GetComponentInParent<PlayerHealth>();
 
         spear = transform.GetChild(0).gameObject; //get the spear which is a child of this object
     }
@@ -29,7 +32,7 @@ public class KnightAttack : MonoBehaviour
         timer -= Time.deltaTime; //dash cooldown goes down
 
         //if player presses spacebar
-        if(Input.GetButtonDown("Attack") && timer <= 0)
+        if(Input.GetButtonDown("Attack") && timer <= 0 && !health.takingDamage)
         {
             GetComponent<Animator>().SetTrigger("Attacking");
             Attack();
@@ -48,8 +51,6 @@ public class KnightAttack : MonoBehaviour
     
     IEnumerator getInvulnerable()
     {
-        canTakeDamage = false;
         yield return new WaitForSeconds(0.35f);
-        canTakeDamage = true;
     }
 }
