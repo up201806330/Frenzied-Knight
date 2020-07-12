@@ -25,7 +25,11 @@ public class PlayerHealth : MonoBehaviour
     // player takes damage (or gains health if damage is negative)
     public void TakeDamage(int damage)
     {
-        if(!switchState.enraged && GameObject.Find("Knight").GetComponent<KnightAttack>().canTakeDamage || switchState.enraged)
+        health -= damage;
+        healthBar.ChangeSliderValue(-damage);
+       
+        
+        if(health > healthToEnrage && switchState.enraged && GameObject.Find("Knight").GetComponent<KnightAttack>().canTakeDamage) // Is in demon mode and regained enough health
         {
             switchState.Transform(false);
         }
