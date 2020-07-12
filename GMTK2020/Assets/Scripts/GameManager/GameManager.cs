@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 
     private Score score;
 
-    private bool lost = false;
+    public bool lost = false;
     private bool once = true;
 
     // Start is called before the first frame update
@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
                  Resume();
         }
 
-        if(GameObject.FindGameObjectWithTag("MainPlayer").GetComponent<SwitchState>().deadDone && score != null)
+        else
         {
             score.UpdateHighScore(); //We save the high score before game over, otherwise retrying would erase the high score
             GameOver();
