@@ -9,8 +9,8 @@ public class PlayerHealth : MonoBehaviour
     public int health = 30;
     private int healthToEnrage;
     private Rigidbody2D rb;
-
     private HealthBar healthBar;
+    private KnightAttack knightAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +20,7 @@ public class PlayerHealth : MonoBehaviour
         healthBar = GameObject.Find("PlayerHealthBar").GetComponent<HealthBar>();
         healthToEnrage = (int)Math.Ceiling((double)health / 2); 
         healthBar.SetMaxSlider(health); //we set the slider's max value to the max value of player's health
+        knightAttack = GameObject.Find("Knight").GetComponent<KnightAttack>();
     }
 
     // player takes damage (or gains health if damage is negative)
@@ -29,7 +30,7 @@ public class PlayerHealth : MonoBehaviour
         healthBar.ChangeSliderValue(-damage);
        
         
-        if(health > healthToEnrage && switchState.enraged && GameObject.Find("Knight").GetComponent<KnightAttack>().canTakeDamage) // Is in demon mode and regained enough health
+        if(health > healthToEnrage && switchState.enraged && knightAttack.canTakeDamage) // Is in demon mode and regained enough health
         {
             switchState.Transform(false);
         }
