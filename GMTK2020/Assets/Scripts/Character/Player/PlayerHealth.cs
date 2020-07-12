@@ -15,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     private AudioSource hitSound;
     private AudioSource healSound;
     private AudioSource deathSound;
+    public bool takingDamage = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,11 +35,12 @@ public class PlayerHealth : MonoBehaviour
     // player takes damage (or gains health if damage is negative)
     public void TakeDamage(int damage)
     {
-        if((GameObject.Find("Knight") != null && knightAttack.canTakeDamage) || GameObject.Find("Demon") != null)
+        if (!takingDamage)
         {
             health -= damage;
             healthBar.ChangeSliderValue(-damage);
-            
+            takingDamage = true;
+
             if (damage > 0)
             {
                 hitSound.Play();

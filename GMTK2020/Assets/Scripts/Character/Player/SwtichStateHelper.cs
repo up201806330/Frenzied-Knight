@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SwtichStateHelper : MonoBehaviour
 {
     private SwitchState switchState;
     private GameManager gm;
+    private PlayerHealth health;
 
     private void Start()
     {
         switchState = GetComponentInParent<SwitchState>();
         gm = GameObject.Find("GameManager").GetComponent<GameManager>();
+        health = GetComponentInParent<PlayerHealth>();
     }
 
     private void switchToKnight()
@@ -31,5 +31,10 @@ public class SwtichStateHelper : MonoBehaviour
     private void dieDone()
     {
         gm.lost = true;
+    }
+
+    private void noLongerHurting()
+    {
+        health.takingDamage = false;
     }
 }

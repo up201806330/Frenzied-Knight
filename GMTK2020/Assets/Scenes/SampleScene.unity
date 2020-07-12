@@ -4777,7 +4777,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dash: 7500
-  canTakeDamage: 1
 --- !u!114 &836365980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6493,8 +6492,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.09, y: -0.05}
-  m_Size: {x: 0.5, y: 0.2}
+  m_Offset: {x: 0, y: -0.05}
+  m_Size: {x: 0.4, y: 0.2}
   m_Direction: 1
 --- !u!114 &1081435310
 MonoBehaviour:
@@ -8775,6 +8774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
+  takingDamage: 0
 --- !u!50 &1764332530
 Rigidbody2D:
   serializedVersion: 4

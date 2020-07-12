@@ -8,8 +8,8 @@ public class KnightAttack : MonoBehaviour
     public float dash = 5000f; 
     private float fixedTimer = 0.3f;
     private float timer;
-    public bool canTakeDamage = true;
-    
+    private PlayerHealth health;
+
     private GameObject spear;
 
     private AudioSource spearSound;
@@ -19,6 +19,7 @@ public class KnightAttack : MonoBehaviour
     {
         rb = GameObject.Find("Player").GetComponent<Rigidbody2D>();
         timer = fixedTimer;
+        health = GetComponentInParent<PlayerHealth>();
 
         spear = transform.GetChild(0).gameObject; //get the spear which is a child of this object
         spearSound = GameObject.Find("SpearSound").GetComponent<AudioSource>();
@@ -32,7 +33,7 @@ public class KnightAttack : MonoBehaviour
         timer -= Time.deltaTime; //dash cooldown goes down
 
         //if player presses spacebar
-        if(Input.GetButtonDown("Attack") && timer <= 0)
+        if(Input.GetButtonDown("Attack") && timer <= 0 && !health.takingDamage)
         {
             spearSound.Play();
             GetComponent<Animator>().SetTrigger("Attacking");
@@ -52,8 +53,6 @@ public class KnightAttack : MonoBehaviour
     
     IEnumerator getInvulnerable()
     {
-        canTakeDamage = false;
         yield return new WaitForSeconds(0.35f);
-        canTakeDamage = true;
     }
 }
