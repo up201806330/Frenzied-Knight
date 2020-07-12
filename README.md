@@ -10,6 +10,10 @@
     - [Desward](https://desward.itch.io/)
     - [Rafael Soares Ribeiro](https://github.com/up201806330) ([up201806330@fe.up.pt](mailto:up201806330@fe.up.pt))
 
+## Controls
+- `W` / `A` / `S` / `D` to move
+- `Spacebar` to attack
+
 ## Screenshots
 
 ![1](Media/Screenshot_6.png)
@@ -21,7 +25,3 @@
 ## Gameplay
 
 ![6](Media/Gameplay.gif)
-
-## Controls
-- `W` / `A` / `S` / `D` to move
-- `Spacebar` to attack
