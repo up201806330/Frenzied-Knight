@@ -12,7 +12,7 @@ public class EnemyGenerator : MonoBehaviour
 
     public int maxDrops = 10;
     private int counter = 0;
-    private int timeUntilDrop = 2;
+    private int timeUntilDrop = 3;
 
     private int chanceToSpawnSkeleton = 20;
     private int chanceToSpawnZombie = 0;

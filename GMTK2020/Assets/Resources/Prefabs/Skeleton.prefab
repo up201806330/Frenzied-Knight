@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 2
-  knockback: 3500
+  knockback: 2500
 --- !u!114 &8229625765732286451
 MonoBehaviour:
   m_ObjectHideFlags: 0
