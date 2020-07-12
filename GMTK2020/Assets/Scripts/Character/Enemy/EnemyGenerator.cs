@@ -24,7 +24,7 @@ public class EnemyGenerator : MonoBehaviour
         skeletonPrefab = (GameObject)Resources.Load("Prefabs/Skeleton");
         zombiePrefab = (GameObject)Resources.Load("Prefabs/Zombie");
 
-        InvokeRepeating("EnemyWave", 2f, maxDrops * timeUntilDrop + 5);
+        InvokeRepeating("EnemyWave", 2f, maxDrops * timeUntilDrop + 10);
     }
 
     void EnemyWave()
