@@ -8,6 +8,9 @@ public class SwitchState : MonoBehaviour
 
     [SerializeField]
     public bool enraged = false;
+
+    public bool dead = false;
+    public bool deadDone = false;
     
     void Start()
     {

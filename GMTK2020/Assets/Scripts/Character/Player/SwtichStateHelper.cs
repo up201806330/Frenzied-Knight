@@ -20,4 +20,14 @@ public class SwtichStateHelper : MonoBehaviour
     {
         switchState.switchToDemon();
     }
+
+    private void die()
+    {
+        switchState.dead = true;
+    }
+
+    private void dieDone()
+    {
+        switchState.deadDone = true;
+    }
 }

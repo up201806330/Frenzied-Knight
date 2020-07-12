@@ -16,7 +16,7 @@ public class EnemyController : CharacterController
     protected override void Update()
     {
         base.Update();
-        if (target == null)
+        if (target.GetComponentInParent<SwitchState>().dead)
         {
             animator.SetBool("playerDead", true);
             playerDead = true;

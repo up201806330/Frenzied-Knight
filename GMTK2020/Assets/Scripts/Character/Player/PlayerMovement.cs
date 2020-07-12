@@ -14,6 +14,11 @@ public class PlayerMovement : MonoBehaviour
 
 		float horizontalMove = Input.GetAxisRaw("Horizontal") * speed, verticalMove = Input.GetAxis("Vertical") * speed;
 		
+		if (GetComponent<SwitchState>().dead)
+        {
+			horizontalMove = 0; verticalMove = 0;
+        }
+
 		if(horizontalMove == 0 || verticalMove == 0)
 		{
 			rb.velocity = new Vector2(horizontalMove * Time.fixedDeltaTime, verticalMove * Time.fixedDeltaTime);

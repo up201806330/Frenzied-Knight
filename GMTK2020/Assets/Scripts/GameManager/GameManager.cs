@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
                  Resume();
         }
 
-        if(GameObject.FindGameObjectWithTag("Player") == null && score != null)
+        if(GameObject.FindGameObjectWithTag("MainPlayer").GetComponent<SwitchState>().deadDone && score != null)
         {
             score.UpdateHighScore(); //We save the high score before game over, otherwise retrying would erase the high score
             GameOver();

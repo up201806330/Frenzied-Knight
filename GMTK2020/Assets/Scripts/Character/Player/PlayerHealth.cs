@@ -39,7 +39,8 @@ public class PlayerHealth : MonoBehaviour
         }
         else if (health <= 0) // Died
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            GetComponentInChildren<Animator>().SetTrigger("Dead");
         }
         else if (damage > 0)
         {
