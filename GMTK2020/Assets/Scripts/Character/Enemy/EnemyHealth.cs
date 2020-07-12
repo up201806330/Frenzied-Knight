@@ -27,9 +27,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void DealDamageToEnemy(int damage)
     {
-        GetPushed();
-        enemyHealth -= damage;
-
+        
         if(enemyHealth <= 0) //if enemy health is <= 0 it has a change to drop the potion and gets destroyed 
         {
             if(Random.Range(1,100) <= dropChance) //45% chance
@@ -46,6 +44,9 @@ public class EnemyHealth : MonoBehaviour
 
             Destroy(gameObject);
         }
+
+        GetPushed();
+        enemyHealth -= damage;
     }
 
     private void GetPushed()

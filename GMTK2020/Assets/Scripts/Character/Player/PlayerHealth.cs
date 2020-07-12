@@ -43,9 +43,12 @@ public class PlayerHealth : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            else
+            else if (damage > 0)
             {
                 GetComponentInChildren<Animator>().SetTrigger("Hit");
+            } else if (damage < 0)
+            {
+                GetComponentInChildren<Animator>().SetTrigger("Heal");
             }
         }
     }
