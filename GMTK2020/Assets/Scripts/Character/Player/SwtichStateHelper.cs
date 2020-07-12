@@ -5,10 +5,12 @@ using UnityEngine;
 public class SwtichStateHelper : MonoBehaviour
 {
     private SwitchState switchState;
+    private GameManager gm;
 
     private void Start()
     {
         switchState = GetComponentInParent<SwitchState>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void switchToKnight()
@@ -28,6 +30,6 @@ public class SwtichStateHelper : MonoBehaviour
 
     private void dieDone()
     {
-        switchState.deadDone = true;
+        gm.lost = true;
     }
 }

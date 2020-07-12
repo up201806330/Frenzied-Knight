@@ -10,7 +10,6 @@ public class SwitchState : MonoBehaviour
     public bool enraged = false;
 
     public bool dead = false;
-    public bool deadDone = false;
 
     private AudioSource knightMusic; 
     private AudioSource demonMusic;
