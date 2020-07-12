@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public float pushForce = 300f;
     public Transform pushPos;
     private Score score;
+    private Animator anim;
 
     [SerializeField]
     public int dropChance = 45;
@@ -18,6 +19,7 @@ public class EnemyHealth : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         score = GameObject.Find("GameManager").GetComponent<Score>();
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -27,7 +29,8 @@ public class EnemyHealth : MonoBehaviour
 
     public void DealDamageToEnemy(int damage)
     {
-        
+        anim.SetTrigger("Hit");
+
         if(enemyHealth <= 0) //if enemy health is <= 0 it has a change to drop the potion and gets destroyed 
         {
             if(Random.Range(1,100) <= dropChance) //45% chance
