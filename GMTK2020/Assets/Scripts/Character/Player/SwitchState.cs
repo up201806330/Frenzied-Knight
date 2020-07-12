@@ -11,6 +11,9 @@ public class SwitchState : MonoBehaviour
 
     public bool dead = false;
     public bool deadDone = false;
+
+    private AudioSource knightMusic; 
+    private AudioSource demonMusic;
     
     void Start()
     {
@@ -18,6 +21,35 @@ public class SwitchState : MonoBehaviour
         demon = GameObject.Find("Demon");
         knight.gameObject.SetActive(true);
         demon.gameObject.SetActive(false);
+
+        knightMusic = GameObject.Find("KnightMusic").GetComponent<AudioSource>();
+        demonMusic = GameObject.Find("DemonMusic").GetComponent<AudioSource>();
+        demonMusic.volume = 0;
+    }
+
+    void Update()
+    {
+
+        // knight and demon music
+        if(enraged)
+        {
+            if(demonMusic.volume == 0)
+            {
+                demonMusic.Stop();
+                demonMusic.Play();
+            }
+            knightMusic.volume -= 0.025f;
+            demonMusic.volume += 0.025f;
+        } else if(!enraged)
+        {
+            if(knightMusic.volume == 0)
+            {
+                knightMusic.Stop();
+                knightMusic.Play();
+            }
+            demonMusic.volume -= 0.025f;
+            knightMusic.volume += 0.025f;
+        }
     }
 
     public void switchToKnight()
