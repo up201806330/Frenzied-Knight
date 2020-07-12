@@ -12,7 +12,6 @@ public class KnightAttack : MonoBehaviour
 
     private GameObject spear;
 
-
     // Start is called before the first frame update
     void Start()
     {
