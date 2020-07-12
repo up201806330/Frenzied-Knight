@@ -4020,7 +4020,7 @@ GameObject:
   - component: {fileID: 836365977}
   - component: {fileID: 836365979}
   - component: {fileID: 836365980}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Knight
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4153,6 +4153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dash: 10000
+  canTakeDamage: 1
 --- !u!114 &836365980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4454,7 +4455,7 @@ GameObject:
   - component: {fileID: 1081435308}
   - component: {fileID: 1081435309}
   - component: {fileID: 1081435310}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Spear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
