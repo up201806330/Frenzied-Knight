@@ -12,6 +12,8 @@ public class KnightAttack : MonoBehaviour
     
     private GameObject spear;
 
+    private AudioSource spearSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,7 @@ public class KnightAttack : MonoBehaviour
         timer = fixedTimer;
 
         spear = transform.GetChild(0).gameObject; //get the spear which is a child of this object
+        spearSound = GameObject.Find("SpearSound").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class KnightAttack : MonoBehaviour
         //if player presses spacebar
         if(Input.GetButtonDown("Attack") && timer <= 0)
         {
+            spearSound.Play();
             GetComponent<Animator>().SetTrigger("Attacking");
             Attack();
             timer = fixedTimer; //reset the timer

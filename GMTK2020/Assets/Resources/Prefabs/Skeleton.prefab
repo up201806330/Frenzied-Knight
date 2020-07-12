@@ -177,6 +177,7 @@ MonoBehaviour:
   pushForce: 300
   pushPos: {fileID: 8229625766561056870}
   dropChance: 45
+  isFrozen: 0
 --- !u!114 &8229625765732286452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 2
-  knockback: 2500
+  knockback: 2200
 --- !u!114 &8229625765732286451
 MonoBehaviour:
   m_ObjectHideFlags: 0

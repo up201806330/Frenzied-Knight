@@ -4,21 +4,15 @@ using UnityEngine;
 
 public class DestroyTutorial : MonoBehaviour
 {
-    private static bool show = true;
     // Start is called before the first frame update
     void Start()
     {
-        if(show)
-        {
-            this.gameObject.SetActive(true);
-            StartCoroutine(DestroyTuto());
-            show = false;
-        }
+        StartCoroutine(DestroyTuto());
     }
 
     IEnumerator DestroyTuto()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4);
         Destroy(gameObject);
     }
 }

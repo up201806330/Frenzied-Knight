@@ -13,12 +13,16 @@ public class GameManager : MonoBehaviour
     public bool lost = false;
     private bool once = true;
 
+    private AudioSource pauseSound;
+
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
         
         score = GetComponent<Score>();
+
+        pauseSound = GameObject.Find("PauseSound").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -43,12 +47,14 @@ public class GameManager : MonoBehaviour
     
     public void Pause()
     {
+        pauseSound.Play();
         pausePanel.SetActive(true);
         Time.timeScale = 0;
     }
 
     public void Resume()
     {
+        pauseSound.Play();
         pausePanel.SetActive(false);
         Time.timeScale = 1;
     }

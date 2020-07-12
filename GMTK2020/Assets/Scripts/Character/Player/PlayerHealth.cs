@@ -12,6 +12,10 @@ public class PlayerHealth : MonoBehaviour
     private HealthBar healthBar;
     private KnightAttack knightAttack;
 
+    private AudioSource hitSound;
+    private AudioSource healSound;
+    private AudioSource deathSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +25,10 @@ public class PlayerHealth : MonoBehaviour
         healthToEnrage = (int)Math.Ceiling((double)health / 2); 
         healthBar.SetMaxSlider(health); //we set the slider's max value to the max value of player's health
         knightAttack = GameObject.Find("Knight").GetComponent<KnightAttack>();
+
+        hitSound = GameObject.Find("HitSound").GetComponent<AudioSource>();
+        healSound = GameObject.Find("HealSound").GetComponent<AudioSource>();
+        deathSound = GameObject.Find("DeathSound").GetComponent<AudioSource>();
     }
 
     // player takes damage (or gains health if damage is negative)
@@ -33,10 +41,12 @@ public class PlayerHealth : MonoBehaviour
             
             if (damage > 0)
             {
+                hitSound.Play();
                 GetComponentInChildren<Animator>().SetTrigger("Hit");
             }
             else if (damage < 0)
             {
+                healSound.Play();
                 GetComponentInChildren<Animator>().SetTrigger("Heal");
             }
             
@@ -53,6 +63,7 @@ public class PlayerHealth : MonoBehaviour
             else if (health <= 0) // Died
             {
                 //Destroy(gameObject);
+                deathSound.Play();
                 GetComponentInChildren<Animator>().SetTrigger("Dead");
             }
         }  

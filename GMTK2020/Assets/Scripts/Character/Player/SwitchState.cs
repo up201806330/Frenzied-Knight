@@ -13,6 +13,8 @@ public class SwitchState : MonoBehaviour
 
     private AudioSource knightMusic; 
     private AudioSource demonMusic;
+
+    private AudioSource enrageSound;
     
     void Start()
     {
@@ -20,6 +22,8 @@ public class SwitchState : MonoBehaviour
         demon = GameObject.Find("Demon");
         knight.gameObject.SetActive(true);
         demon.gameObject.SetActive(false);
+
+        enrageSound = GameObject.Find("EnrageSound").GetComponent<AudioSource>();
 
         knightMusic = GameObject.Find("KnightMusic").GetComponent<AudioSource>();
         demonMusic = GameObject.Find("DemonMusic").GetComponent<AudioSource>();
@@ -59,6 +63,7 @@ public class SwitchState : MonoBehaviour
 
     public void switchToDemon()
     {
+        enrageSound.Play();
         knight.gameObject.SetActive(false);
         demon.gameObject.SetActive(true);
     }
