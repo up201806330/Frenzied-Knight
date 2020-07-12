@@ -23,11 +23,9 @@ public class EnemyAttack : MonoBehaviour
         // when enemy collides with the player we take damage
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponentInChildren<Animator>().SetTrigger("Hit");
-
             player.GetComponent<PlayerHealth>().TakeDamage(attack);
 
-            StartCoroutine(Knockback(0.02f, knockback, player.GetComponent<Rigidbody2D>().transform));
+            Knockback();
 
             StartCoroutine(getInvulnerable());
         }
@@ -44,17 +42,9 @@ public class EnemyAttack : MonoBehaviour
         Physics2D.IgnoreLayerCollision(8, 9, false);
     }
 
-    public IEnumerator Knockback(float knockDur, float knockbackPwr, Transform obj)
+    private void Knockback()
     {
-        float timer = 0;
-
-        while (knockDur > timer)
-        {
-            timer += Time.deltaTime;
-            Vector2 direction = (obj.transform.position - this.transform.position).normalized;
-            player.GetComponent<Rigidbody2D>().AddForce(direction * knockbackPwr);
-        }
-
-        yield return 0;
+        Vector3 direction = transform.localScale.normalized; 
+        player.GetComponent<Rigidbody2D>().AddForce(direction * knockback);
     }
 }
