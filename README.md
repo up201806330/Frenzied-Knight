@@ -1,6 +1,6 @@
 # Frenzied Knight
 
-[Try it out]()
+[Try it out](https://desward.itch.io/frenzied-knight)
 
 - **Project name:** Frenzied Knight
 - **Short description:** Submission for the [GMTK Game Jam 2020](https://itch.io/jam/gmtk-2020),  themed **Out of control**
