@@ -6223,7 +6223,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1081435308
 Transform:
   m_ObjectHideFlags: 0
@@ -6251,8 +6251,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0015492833, y: -0.0720056}
-  m_Size: {x: 0.3605834, y: 0.111129515}
+  m_Offset: {x: -0.1, y: -0.06}
+  m_Size: {x: 0.7, y: 0.15}
   m_Direction: 1
 --- !u!114 &1081435310
 MonoBehaviour:
@@ -8041,6 +8041,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enraged: 0
+  dead: 0
+  deadDone: 0
 --- !u!114 &1764332529
 MonoBehaviour:
   m_ObjectHideFlags: 0
