@@ -4,17 +4,18 @@ public class PlayerMovement : MonoBehaviour
 {
 	public float speed = 200f;
 	private Rigidbody2D rb;
-
+	private SwitchState state;
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
+		state = GetComponent<SwitchState>();
 	}
 	void FixedUpdate()
 	{
 
 		float horizontalMove = Input.GetAxisRaw("Horizontal") * speed, verticalMove = Input.GetAxis("Vertical") * speed;
 		
-		if (GetComponent<SwitchState>().dead)
+		if (state.dead)
         {
 			horizontalMove = 0; verticalMove = 0;
         }
