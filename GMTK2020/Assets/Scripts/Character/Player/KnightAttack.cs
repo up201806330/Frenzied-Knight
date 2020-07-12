@@ -39,8 +39,7 @@ public class KnightAttack : MonoBehaviour
 
     private void Attack()
     {
-        Vector3 direction = transform.localScale.normalized;
-        Debug.Log(direction.x);
+        Vector3 direction = transform.localScale.normalized; 
         rb.AddForce( new Vector2(direction.x * dash, 0f)); //we apply the force in the direction character is facing
         spear.SetActive(true); //the spear is able to deal damage
         StartCoroutine(getInvulnerable());
