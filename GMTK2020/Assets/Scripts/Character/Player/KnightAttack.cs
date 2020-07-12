@@ -8,6 +8,7 @@ public class KnightAttack : MonoBehaviour
     public float dash = 5000f; 
     private float fixedTimer = 0.3f;
     private float timer;
+    public bool canTakeDamage = true;
     
     private GameObject spear;
 
@@ -41,5 +42,14 @@ public class KnightAttack : MonoBehaviour
         Vector3 direction = transform.localScale.normalized; 
         rb.AddForce( new Vector2(direction.x * dash, 0f)); //we apply the force in the direction character is facing
         spear.SetActive(true); //the spear is able to deal damage
+        StartCoroutine(getInvulnerable());
+    }
+
+    
+    IEnumerator getInvulnerable()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(0.5f);
+        canTakeDamage = true;
     }
 }
