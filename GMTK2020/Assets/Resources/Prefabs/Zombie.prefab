@@ -206,6 +206,7 @@ MonoBehaviour:
   healthSegment: 0.3
   pushForce: 100
   pushPos: {fileID: 3414257058649904067}
+  dropChance: 45
 --- !u!114 &3414257059077121980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,7 +220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: 4
-  knockback: 5000
+  knockback: 4500
 --- !u!114 &3414257059077121924
 MonoBehaviour:
   m_ObjectHideFlags: 0

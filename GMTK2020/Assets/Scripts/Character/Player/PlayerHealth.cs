@@ -26,30 +26,35 @@ public class PlayerHealth : MonoBehaviour
     // player takes damage (or gains health if damage is negative)
     public void TakeDamage(int damage)
     {
-        health -= damage;
-        healthBar.ChangeSliderValue(-damage);
-       
-        
-        if(health > healthToEnrage && switchState.enraged && knightAttack.canTakeDamage) // Is in demon mode and regained enough health
+        if((GameObject.Find("Knight") != null && knightAttack.canTakeDamage) || GameObject.Find("Demon") != null)
         {
-            switchState.Transform(false);
-        }
-        if (health <= healthToEnrage && health > 0 && !switchState.enraged) // Is in knight mode and lost enough health
-        {
-            switchState.Transform(true);
-        }
-        else if (health <= 0) // Died
-        {
-            //Destroy(gameObject);
-            GetComponentInChildren<Animator>().SetTrigger("Dead");
-        }
-        else if (damage > 0)
-        {
-            GetComponentInChildren<Animator>().SetTrigger("Hit");
-        }
-        else if (damage < 0)
-        {
-            GetComponentInChildren<Animator>().SetTrigger("Heal");
-        }
+            health -= damage;
+            healthBar.ChangeSliderValue(-damage);
+            
+            if (damage > 0)
+            {
+                GetComponentInChildren<Animator>().SetTrigger("Hit");
+            }
+            else if (damage < 0)
+            {
+                GetComponentInChildren<Animator>().SetTrigger("Heal");
+            }
+            
+            if(health > healthToEnrage) // Is in demon mode and regained enough health
+            {
+                switchState.enraged = true;
+                switchState.Transform(false);
+            }
+            if (health <= healthToEnrage && health > 0) // Is in knight mode and lost enough health
+            {
+                switchState.enraged = false;
+                switchState.Transform(true);
+            }
+            else if (health <= 0) // Died
+            {
+                //Destroy(gameObject);
+                GetComponentInChildren<Animator>().SetTrigger("Dead");
+            }
+        }  
     }
 }
