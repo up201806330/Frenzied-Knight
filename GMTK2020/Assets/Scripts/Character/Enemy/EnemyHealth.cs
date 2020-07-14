@@ -13,7 +13,7 @@ public class EnemyHealth : MonoBehaviour
     private Animator anim;
 
     [SerializeField]
-    public int dropChance = 45;
+    public int dropChance = 40;
 
     public bool isFrozen = false;
 
@@ -35,31 +35,40 @@ public class EnemyHealth : MonoBehaviour
         StartCoroutine(Freeze());
 
         if(enemyHealth <= 0) //if enemy health is <= 0 it has a change to drop the potion and gets destroyed 
-        {
-            if(Random.Range(1,100) <= dropChance) //45% chance
-            {
-                Instantiate(Resources.Load("Prefabs/Potion"), transform.position, transform.rotation);
-            }
-            
-            //GameObject.Find("Generator").GetComponent<EnemyGenerator>().enemyCount--;
-            
+        { 
             //we add score based on enemy's name
-            if(this.gameObject.name == "TinyGuy") score.AddScore(5);
-            else if(this.gameObject.name == "Skeleton") score.AddScore(10);
-            else if(this.gameObject.name == "Zombie") score.AddScore(15);
+            if(this.gameObject.name == "TinyGuy") 
+            {
+                score.AddScore(5);
+                DropChance(20);
+            } else if(this.gameObject.name == "Skeleton")
+            {
+                score.AddScore(10);
+                DropChance(40);
+            } else if(this.gameObject.name == "Zombie")
+            {
+                score.AddScore(15);
+                DropChance(60);
+            }
 
             Destroy(gameObject);
         }
-
-        GetPushed();
+        
         enemyHealth -= damage;
+        GetPushed();
     }
 
     IEnumerator Freeze()
     {
         isFrozen = true;
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.6f);
         isFrozen = false;
+    }
+
+    //chance of dropping a potion
+    private void DropChance(int chance)
+    {
+        if(Random.Range(1,100) <= chance) Instantiate(Resources.Load("Prefabs/Potion"), transform.position, transform.rotation);
     }
 
     private void GetPushed()

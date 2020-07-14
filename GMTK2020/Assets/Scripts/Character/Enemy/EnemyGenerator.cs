@@ -10,7 +10,7 @@ public class EnemyGenerator : MonoBehaviour
 
     public Transform[] SpawnPositions = new Transform[2];
 
-    public int maxDrops = 10;
+    public int maxDrops = 12;
     private int counter = 0;
     private int timeUntilDrop = 2;
 
@@ -24,7 +24,7 @@ public class EnemyGenerator : MonoBehaviour
         skeletonPrefab = (GameObject)Resources.Load("Prefabs/Skeleton");
         zombiePrefab = (GameObject)Resources.Load("Prefabs/Zombie");
 
-        InvokeRepeating("EnemyWave", 2f, maxDrops * timeUntilDrop + 10);
+        InvokeRepeating("EnemyWave", 2f, maxDrops * timeUntilDrop + 12);
     }
 
     void EnemyWave()

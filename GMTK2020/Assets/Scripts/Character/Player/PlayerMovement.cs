@@ -2,7 +2,9 @@
 
 public class PlayerMovement : MonoBehaviour
 {
-	public float speed = 200f;
+	public float knightSpeed = 200f;
+	public float demonSpeed = 300f;
+	private float speed;
 	private Rigidbody2D rb;
 	private SwitchState state;
 	void Start()
@@ -10,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 		rb = GetComponent<Rigidbody2D>();
 		state = GetComponent<SwitchState>();
 	}
+
 	void FixedUpdate()
 	{
 
@@ -20,6 +23,9 @@ public class PlayerMovement : MonoBehaviour
 			horizontalMove = 0; 
 			verticalMove = 0;
         }
+
+		if(!state.enraged) speed = knightSpeed;
+		else if(state.enraged) speed = demonSpeed;
 
 		if(horizontalMove == 0 || verticalMove == 0)
 		{
