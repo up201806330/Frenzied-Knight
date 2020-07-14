@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    Text scoreTxt;
-    Text highScoreTxt;
+    private Text scoreTxt;
+    private Text highScoreTxt;
 
     private int score = 0; 
     private static int oldHighScore = 0;
     private int highScore = 0;
+
+    public ScorePlus scorePlus;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,7 @@ public class Score : MonoBehaviour
 
     public void AddScore(int val)
     {
+        scorePlus.PlusScore(val);
         score += val;
     }
 

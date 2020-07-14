@@ -14,6 +14,8 @@ public class SwitchState : MonoBehaviour
     private AudioSource demonMusic;
 
     private AudioSource enrageSound;
+
+    private PlayerHealth health;
     
     void Start()
     {
@@ -27,11 +29,12 @@ public class SwitchState : MonoBehaviour
         knightMusic = GameObject.Find("KnightMusic").GetComponent<AudioSource>();
         demonMusic = GameObject.Find("DemonMusic").GetComponent<AudioSource>();
         demonMusic.volume = 0;
+
+        health = this.GetComponent<PlayerHealth>();
     }
 
     void Update()
     {
-
         // knight and demon music
         if(enraged)
         {
@@ -80,5 +83,6 @@ public class SwitchState : MonoBehaviour
             anim = demon.GetComponent<Animator>();
             anim.SetTrigger("SwitchState");
         }
+        health.takingDamage = false;
     }
 }
