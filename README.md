@@ -14,6 +14,10 @@
 - `W` / `A` / `S` / `D` to move
 - `Spacebar` to attack
 
+## Gameplay
+
+![6](Media/Gameplay.gif)
+
 ## Screenshots
 
 ![1](Media/Screenshot_6.png)
@@ -22,6 +26,4 @@
 ![4](Media/Screenshot_5.png)
 ![5](Media/Screenshot_3.png)
 
-## Gameplay
 
-![6](Media/Gameplay.gif)
