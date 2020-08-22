@@ -1,4 +1,4 @@
-# Frenzied Knight
+# Frenzied-Knight
 
 [Try it out](https://desward.itch.io/frenzied-knight)
 
